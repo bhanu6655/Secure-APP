@@ -9,11 +9,18 @@ const NotesWidget = () => {
 
   // Save to Local Storage whenever notes change
   useEffect(() => {
-    localStorage.setItem("super_app_notes", notes);
+    if (notes.trim() === "") {
+      localStorage.removeItem("super_app_notes");
+    } else {
+      localStorage.setItem("super_app_notes", notes);
+    }
   }, [notes]);
 
-  const handleClear = () => {
+  const handleClear = (e) => {
+    e.stopPropagation();
+    e.preventDefault();
     setNotes("");
+    localStorage.removeItem("super_app_notes");
   };
 
   return (
@@ -22,7 +29,8 @@ const NotesWidget = () => {
         <h2 className="text-3xl font-bold text-black">All notes</h2>
         <button
           onClick={handleClear}
-          className="text-black/60 hover:text-red-600 transition-colors p-2 rounded-full hover:bg-black/10"
+          type="button"
+          className="text-black/60 hover:text-red-600 transition-colors p-2 rounded-full hover:bg-black/10 relative z-10 cursor-pointer"
           title="Clear notes"
         >
           <Trash2 size={20} />
@@ -30,19 +38,7 @@ const NotesWidget = () => {
       </div>
       <textarea
         className="flex-1 bg-transparent border-none resize-none text-black focus:outline-none text-lg font-medium placeholder-black/50"
-        placeholder="Hello, my name is G. Bhanuprakash.
-I recently completed my B.Tech in Computer Science Engineering with a specialization in Cyber Security from MLR Institute of Technology, Hyderabad.
-My core technical skills include Java, Python, JavaScript, SQL, HTML, CSS, React.js, Node.js, and Express.js.
-I have a strong understanding of Object-Oriented Programming, Data Structures & Algorithms, and Database Management Systems.
-I am proficient in working with MySQL, SQLite, Git, GitHub, REST APIs, and Postman.
-I have experience developing full-stack web applications and backend APIs.
-I am particularly interested in Full-Stack Development, Software Engineering, and Cyber Security.
-I enjoy building real-world applications that solve practical problems.
-My projects include an AI-Driven Smart Travel Assistance system, a Secure Voting Backend, and a Document & Speech Multilingual Translator.
-These projects helped me strengthen my problem-solving, debugging, and development skills.
-I am passionate about learning new technologies and continuously improving my technical knowledge.
-Apart from technical skills, I value teamwork, communication, adaptability, and continuous learning.
-I am looking for an opportunity where I can apply my skills, contribute to meaningful projects, and grow professionally."
+        placeholder={`Hi, I'm G. Bhanuprakash — B.Tech CSE (Cyber Security) grad from MLR Institute of Technology, Hyderabad.\nFull-Stack Developer skilled in React, Node.js & Java | Passionate about Cyber Security & building real-world apps.\n\nStart typing your notes here...`}
         value={notes}
         onChange={(e) => setNotes(e.target.value)}
       />
