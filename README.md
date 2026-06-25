@@ -1,82 +1,16 @@
-# Super App
+# React + Vite
 
-A modern React dashboard built with Vite, Tailwind CSS, and Zustand. This project combines widgets, routing, and external API integrations to provide a personalized dashboard experience.
+This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
 
-## Features
+Currently, two official plugins are available:
 
-- Dashboard layout with multiple widgets
-- Weather, news, timer, notes, and user profile components
-- Client-side routing with React Router DOM
-- Global state management using Zustand
-- API integration using Axios
-- Tailwind CSS styling and Vite-powered development
+- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
+- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
 
-## Tech Stack
+## React Compiler
 
-- React 19
-- Vite
-- Tailwind CSS
-- Zustand
-- React Router DOM
-- Axios
-- Lucide React icons
-- js-cookie
+The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
 
-## Project Structure
+## Expanding the Oxlint configuration
 
-- `src/main.jsx` - entry point
-- `src/App.jsx` - top-level application component
-- `src/pages/` - route page components
-- `src/components/` - dashboard widgets and UI components
-- `src/store/useStore.js` - Zustand state management
-- `public/` - static assets
-
-## Setup
-
-1. Install dependencies
-
-```bash
-npm install
-```
-
-2. Create a `.env` file in the project root with your API keys:
-
-```env
-VITE_NEWS_API_KEY=your_news_api_key
-VITE_WEATHER_API_KEY=your_weather_api_key
-VITE_OMDB_API_KEY=your_omdb_api_key
-```
-
-3. Start the development server
-
-```bash
-npm run dev
-```
-
-4. Open the app in your browser at the local Vite URL shown in the terminal.
-
-## Available Scripts
-
-- `npm run dev` - start the development server
-- `npm run build` - build the app for production
-- `npm run preview` - preview the production build
-- `npm run lint` - run Oxlint static analysis
-
-## Environment Variables
-
-This app requires the following environment variables in `.env`:
-
-- `VITE_NEWS_API_KEY` - News API key
-- `VITE_WEATHER_API_KEY` - Weather API key
-- `VITE_OMDB_API_KEY` - OMDB API key
-
-> Keep your `.env` file out of version control. Do not commit secret keys or API tokens.
-
-## Notes
-
-- Ensure your API keys are active and have enough quota.
-- If a widget fails to load, verify the corresponding API key and network access.
-
-## License
-
-This project is currently private.
+If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and Oxlint's TypeScript related rules in your project.
